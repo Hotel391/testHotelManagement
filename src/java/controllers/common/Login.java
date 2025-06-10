@@ -115,7 +115,7 @@ public class Login extends HttpServlet {
 
             AccountGoogle userInfo = AccountGoogleDAO.getInstance().getUserInfo(accessToken);
 
-            if (CustomerDAO.getInstance().checkExistedEmail(userInfo.getEmail()) == false) {
+            if (!CustomerDAO.getInstance().checkExistedEmail(userInfo.getEmail())) {
                 Customer customerInfo = new Customer();
 
                 customerInfo.setFullName(userInfo.getName());

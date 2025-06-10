@@ -21,18 +21,10 @@ public class DashBoard extends HttpServlet {
         request.setAttribute("bookingCount", dal.BookingDAO.getInstance().BookingCount());
         request.setAttribute("checkoutCount", dal.BookingDAO.getInstance().CheckoutCount());
         request.setAttribute("checkinCount", dal.BookingDetailDAO.getInstance().CheckinCount());
-        //List<DailyRevenue> dailyRevenue = dal.BookingDAO.getInstance().totalMoneyInOneWeek();
+        List<DailyRevenue> dailyRevenue = dal.BookingDAO.getInstance().totalMoneyInOneWeek();
 
         List<String> label = generateWeekLabels();
-        //List<Integer> data = mapRevenueToWeekLabels(dailyRevenue,label);
-        List<Integer> data=new ArrayList<>();
-        data.add(100);
-        data.add(200);
-        data.add(300);
-        data.add(400);
-        data.add(500);
-        data.add(600);
-        data.add(700);
+        List<Integer> data = mapRevenueToWeekLabels(dailyRevenue,label);
         request.setAttribute("labels", label);
         request.setAttribute("data", data);
         request.setAttribute("availableRoomCount", dal.RoomDAO.getInstance().RoomAvailableCount());
