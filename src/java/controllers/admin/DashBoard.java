@@ -18,7 +18,7 @@ public class DashBoard extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("roomCount", dal.RoomDAO.getInstance().RoomCount());
-        request.setAttribute("bookingCount", dal.BookingDAO.getInstance().BookingCount());
+        request.setAttribute("bookingCount", dal.BookingDAO.getInstance().bookingCount());
         request.setAttribute("checkoutCount", dal.BookingDAO.getInstance().CheckoutCount());
         request.setAttribute("checkinCount", dal.BookingDetailDAO.getInstance().CheckinCount());
         //List<DailyRevenue> dailyRevenue = dal.BookingDAO.getInstance().totalMoneyInOneWeek();

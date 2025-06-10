@@ -9,9 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Vector;
 import utility.Encryption;
 
 public class EmployeeDAO {
@@ -31,7 +30,7 @@ public class EmployeeDAO {
     }
 
     public List<Employee> getAllEmployee() {
-        List<Employee> list = new Vector();
+        List<Employee> list = Collections.synchronizedList(new ArrayList<>());
         String sql = "SELECT e.*, r.RoleName, cf.Floor "
                 + "FROM Employee e "
                 + "JOIN Role r ON r.RoleId = e.RoleId "
