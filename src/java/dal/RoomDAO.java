@@ -27,7 +27,7 @@ public class RoomDAO {
         con = new DBContext().connect;
     }
     
-    public int RoomCount(){
+    public int roomCount(){
         String sql="select count(*) from Room";
         
         try(PreparedStatement st = con.prepareStatement(sql); ResultSet rs = st.executeQuery()){
@@ -39,7 +39,7 @@ public class RoomDAO {
         return 0;
     }
 
-    public int RoomAvailableCount() {
+    public int roomAvailableCount() {
         String sql = """
                      SELECT COUNT(*) \r
                      FROM Room r\r
@@ -60,7 +60,7 @@ public class RoomDAO {
         }
         return 0;
     }
-    public int RoomBookedCount() {
+    public int roomBookedCount() {
         String sql = """
                      SELECT COUNT(*) \r
                      FROM Room r\r

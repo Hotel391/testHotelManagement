@@ -17,10 +17,10 @@ public class DashBoard extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("roomCount", dal.RoomDAO.getInstance().RoomCount());
+        request.setAttribute("roomCount", dal.RoomDAO.getInstance().roomCount());
         request.setAttribute("bookingCount", dal.BookingDAO.getInstance().bookingCount());
-        request.setAttribute("checkoutCount", dal.BookingDAO.getInstance().CheckoutCount());
-        request.setAttribute("checkinCount", dal.BookingDetailDAO.getInstance().CheckinCount());
+        request.setAttribute("checkoutCount", dal.BookingDAO.getInstance().checkoutCount());
+        request.setAttribute("checkinCount", dal.BookingDetailDAO.getInstance().checkinCount());
         //List<DailyRevenue> dailyRevenue = dal.BookingDAO.getInstance().totalMoneyInOneWeek();
 
         List<String> label = generateWeekLabels();
@@ -35,8 +35,8 @@ public class DashBoard extends HttpServlet {
         data.add(700);
         request.setAttribute("labels", label);
         request.setAttribute("data", data);
-        request.setAttribute("availableRoomCount", dal.RoomDAO.getInstance().RoomAvailableCount());
-        request.setAttribute("soldOutRoomCount", dal.RoomDAO.getInstance().RoomBookedCount());
+        request.setAttribute("availableRoomCount", dal.RoomDAO.getInstance().roomAvailableCount());
+        request.setAttribute("soldOutRoomCount", dal.RoomDAO.getInstance().roomBookedCount());
         request.setAttribute("employeeCount", dal.EmployeeDAO.getInstance().countEmployee());
         request.setAttribute("customerCount", dal.CustomerDAO.getInstance().customerCount());
         request.getRequestDispatcher("/View/Admin/Dashboard.jsp").forward(request, response);
