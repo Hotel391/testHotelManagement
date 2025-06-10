@@ -23,7 +23,7 @@ public class Email {
 
     private static final int LIMIT_MINUS = 5;
     private String from = "fpthotel@gmail.com";
-    private String password = "";
+    private String password = "jcfu lbfu zxvz mpkc";
 
     private Map<String, String> linkHtml = new HashMap<>();
 
