@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Vector;
 
 public class TypeRoomDAO {
 
@@ -44,7 +43,7 @@ public class TypeRoomDAO {
     }
 
     public List<TypeRoom> getAllTypeRoom() {
-        List<TypeRoom> list = new Vector();
+        List<TypeRoom> list = Collections.synchronizedList(new ArrayList<>());
         String sql = "select typeId, typeName, Description, price from TypeRoom";
         try (PreparedStatement st = con.prepareStatement(sql); ResultSet rs = st.executeQuery()) {
             while (rs.next()) {
@@ -78,7 +77,7 @@ public class TypeRoomDAO {
     public List<TypeRoom> searchTypeRoom(String key) {
         String sql = "select typeId, typeName, Description, price from TypeRoom\n"
                 + "where typeName like ?";
-        List<TypeRoom> list = new Vector<>();
+        List<TypeRoom> list = Collections.synchronizedList(new ArrayList<>());
 
         try (PreparedStatement st = con.prepareStatement(sql)) {
             st.setString(1, '%'+key+'%');
@@ -101,7 +100,7 @@ public class TypeRoomDAO {
 
     public List<TypeRoom> typeRoomPagination(int index, String key) {
 
-        List<TypeRoom> list = new Vector<>();
+        List<TypeRoom> list = Collections.synchronizedList(new ArrayList<>());
 
         String sql = "select typeId, typeName, Description, price from TypeRoom \n";
         if (key != null && !key.isEmpty()) {

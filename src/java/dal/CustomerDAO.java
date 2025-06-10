@@ -127,10 +127,10 @@ public class CustomerDAO {
 
     //create function to search customer by customerID
 
-    public Customer getCustomerByCustomerID(int CustomerID) {
+    public Customer getCustomerByCustomerID(int customerID) {
         String sql = "select * from Customer where CustomerID = ?";
         try (PreparedStatement st = con.prepareStatement(sql);) {
-            st.setInt(1, CustomerID);
+            st.setInt(1, customerID);
             try (ResultSet rs = st.executeQuery();) {
                 if (rs.next()) {
                     return new Customer(rs.getInt(1),
