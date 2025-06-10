@@ -13,7 +13,7 @@ import utility.Encryption;
 import utility.Validation;
 
 @WebServlet(name = "CleanerProfileServlet", urlPatterns = "/cleanerProfile")
-public class cleanerProfile extends HttpServlet {
+public class CleanerProfile extends HttpServlet {
 
     private EmployeeDAO employeeDAO;
 

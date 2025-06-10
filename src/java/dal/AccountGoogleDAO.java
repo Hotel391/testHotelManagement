@@ -16,7 +16,7 @@ import org.apache.http.client.fluent.Request;
  */
 public class AccountGoogleDAO {
     private static AccountGoogleDAO instance;
-    private Connection con;
+
 
     public static AccountGoogleDAO getInstance() {
         if (instance == null) {
@@ -25,9 +25,7 @@ public class AccountGoogleDAO {
         return instance;
     }
 
-    private AccountGoogleDAO() {
-        con = new DBContext().connect;
-    }
+
     
     public String getToken(String code) throws ClientProtocolException, IOException {
         

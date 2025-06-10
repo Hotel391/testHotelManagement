@@ -1,6 +1,5 @@
 package dal;
 
-import models.CleanerFloor;
 import models.Employee;
 import models.Role;
 import models.CleanerFloor;
@@ -9,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 import utility.Encryption;
@@ -199,7 +197,7 @@ public class EmployeeDAO {
                     + " address, phoneNumber, email, gender, CCCD, dateOfBirth, "
                     + "registrationDate, activate, roleId) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            try (PreparedStatement stmt = con.prepareStatement(sqlEmployee, PreparedStatement.RETURN_GENERATED_KEYS)) {
+            try (PreparedStatement stmt = con.prepareStatement(sqlEmployee, java.sql.Statement.RETURN_GENERATED_KEYS)) {
                 stmt.setString(1, emp.getUsername());
                 stmt.setString(2, emp.getPassword());
                 stmt.setString(3, emp.getFullName());

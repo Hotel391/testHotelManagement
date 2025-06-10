@@ -18,9 +18,9 @@ public class DBContext {
          }
      }
 
-    private final String serverName = "localhost";
-    private final String dbName = "HotelManagementDB";
-    private final String portNumber = "1433";
-    private final String userID = "sa";
-    private final String password = "123";
+    private static final String serverName = "localhost";
+    private static final String dbName = "HotelManagementDB";
+    private static final String portNumber = "1433";
+    private static final String userID = "sa";
+    private static final String password = "123";
 }
