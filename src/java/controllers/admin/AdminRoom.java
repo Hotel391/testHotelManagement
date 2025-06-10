@@ -76,7 +76,7 @@ public class AdminRoom extends HttpServlet {
                     roomNumber = Integer.parseInt(roomNumberStr);
                     typeRoomID = Integer.parseInt(typeRoomIdStr);
                 } catch (NumberFormatException e) {
-                    
+                    request.setAttribute("errorMessage", "Lỗi định dạng số phòng hoặc loại phòng.");
                 }
                 dal.RoomDAO.getInstance().updateRoom(typeRoomID, roomNumber);
             }
