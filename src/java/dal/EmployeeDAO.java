@@ -1,6 +1,5 @@
 package dal;
 
-import models.CleanerFloor;
 import models.Employee;
 import models.Role;
 import models.CleanerFloor;

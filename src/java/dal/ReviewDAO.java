@@ -11,8 +11,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Vector;
 
 public class ReviewDAO {
 
@@ -48,7 +49,7 @@ public class ReviewDAO {
                 + "    CustomerAccount ca ON r.Username = ca.Username\n"
                 + "JOIN \n"
                 + "    Customer c ON ca.CustomerId = c.CustomerId;";
-        List<Review> listReview = new Vector<>();
+        List<Review> listReview = Collections.synchronizedList(new ArrayList<>());
         try {
             PreparedStatement ptm = con.prepareStatement(sql);
             ResultSet rs = ptm.executeQuery();
@@ -102,7 +103,7 @@ public class ReviewDAO {
             sql += "WHERE r.[Date] = ?";
         }
 
-        List<Review> listReview = new Vector<>();
+        List<Review> listReview = Collections.synchronizedList(new ArrayList<>());
         try(PreparedStatement ptm = con.prepareStatement(sql);) {
             
 

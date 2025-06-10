@@ -29,7 +29,6 @@ public class ManagerProfile extends HttpServlet {
         HttpSession session = request.getSession();
         Employee manager = (Employee) session.getAttribute("employeeInfo");
 
-
         String action = request.getParameter("action");
         boolean isEditing = "updateprofile".equals(action);
 

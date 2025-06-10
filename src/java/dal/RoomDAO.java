@@ -8,8 +8,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Vector;
 
 public class RoomDAO {
 
@@ -83,7 +84,7 @@ public class RoomDAO {
     }
 
     public List<Room> getAllRoom() {
-        List<Room> listRoom = new Vector<>();
+        List<Room> listRoom = Collections.synchronizedList(new ArrayList<>());
 
         String sql = "SELECT r.RoomNumber, r.isCleaner, "
                 + "tr.TypeId, tr.TypeName, tr.Description, tr.Price, "
@@ -186,7 +187,7 @@ public class RoomDAO {
     }
 
     public List<TypeRoom> getAllTypeRoom() {
-        List<TypeRoom> listTypeRoom = new Vector<>();
+        List<TypeRoom> listTypeRoom = Collections.synchronizedList(new ArrayList<>());
 
         String sql = "SELECT [TypeId]\n"
                 + "      ,[Description]\n"
