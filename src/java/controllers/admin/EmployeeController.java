@@ -184,6 +184,7 @@ public class EmployeeController extends HttpServlet {
                 request.setAttribute("email", email);
                 request.setAttribute("roleId", roleId);
                 request.setAttribute("listEmployee", employeeList);
+//                request.getRequestDispatcher("/View/Admin/Employee.jsp").forward(request, response);
                 System.out.println("1");
                 return  null;
             }
