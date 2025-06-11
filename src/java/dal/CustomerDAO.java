@@ -14,7 +14,7 @@ import java.util.List;
 public class CustomerDAO {
 
     private static CustomerDAO instance;
-
+    private Connection con;
 
     public static CustomerDAO getInstance() {
         if (instance == null) {
@@ -23,6 +23,9 @@ public class CustomerDAO {
         return instance;
     }
 
+    private CustomerDAO() {
+        con = new DBContext().connect;
+    }
 
     public CustomerAccount getCustomerAccount(String username) {
         CustomerAccount ca = null;
