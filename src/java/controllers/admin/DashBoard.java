@@ -25,7 +25,15 @@ public class DashBoard extends HttpServlet {
 
 
         List<String> label = generateWeekLabels();
-        List<Integer> data = mapRevenueToWeekLabels(dailyRevenue,label);
+        //List<Integer> data = mapRevenueToWeekLabels(dailyRevenue,label);
+        List<Integer> data=new ArrayList<>();
+        data.add(100);
+        data.add(200);
+        data.add(300);
+        data.add(400);
+        data.add(500);
+        data.add(600);
+        data.add(700);
         request.setAttribute("labels", label);
         request.setAttribute("data", data);
         request.setAttribute("availableRoomCount", dal.RoomDAO.getInstance().roomAvailableCount());

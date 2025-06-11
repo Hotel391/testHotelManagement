@@ -79,17 +79,14 @@ public class TypeRoomDAO {
                 + "where typeName like ?";
         List<TypeRoom> list = Collections.synchronizedList(new ArrayList<>());
 
-        try (PreparedStatement st = con.prepareStatement(sql)) {
-            st.setString(1, '%'+key+'%');
-            try (ResultSet rs = st.executeQuery()) {
-                while (rs.next()) {
-                    TypeRoom tr = new TypeRoom(rs.getInt(1),
-                            rs.getString(2),
-                            rs.getString(3),
-                            rs.getInt(4));
-                    
-                    list.add(tr);
-                }
+        try (PreparedStatement st = con.prepareStatement(sql); ResultSet rs = st.executeQuery()) {
+            while (rs.next()) {
+                TypeRoom tr = new TypeRoom(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4));
+
+                list.add(tr);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -104,18 +101,12 @@ public class TypeRoomDAO {
 
         String sql = "select typeId, typeName, Description, price from TypeRoom \n";
         if (key != null && !key.isEmpty()) {
-            sql += "where typeName like ? \n";
+            sql += "where typeName like '%" + key + "%' \n";
         }
         sql += "order by TypeId offset ? rows fetch next 5 rows only\n";
 
         try(PreparedStatement st = con.prepareStatement(sql)) {
-            if(key != null && !key.isEmpty()){
-                st.setString(1, '%'+key+'%');
-                st.setInt(1, (index - 1) * 5);
-            }else{
-                st.setInt(1, (index - 1) * 5);
-            }
-            
+            st.setInt(1, (index - 1) * 5);
             try (ResultSet rs = st.executeQuery()) {
                 while (rs.next()) {
                     TypeRoom tr = new TypeRoom(rs.getInt(1),

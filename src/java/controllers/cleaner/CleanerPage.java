@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * @author win
  */
 @WebServlet(name="cleanerPage", urlPatterns={"/cleanerPage"})
-public class cleanerPage extends HttpServlet {
+public class CleanerPage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

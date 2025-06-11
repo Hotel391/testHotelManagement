@@ -197,7 +197,7 @@ public class EmployeeDAO {
                     + " address, phoneNumber, email, gender, CCCD, dateOfBirth, "
                     + "registrationDate, activate, roleId) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            try (PreparedStatement stmt = con.prepareStatement(sqlEmployee, PreparedStatement.RETURN_GENERATED_KEYS)) {
+            try (PreparedStatement stmt = con.prepareStatement(sqlEmployee, java.sql.Statement.RETURN_GENERATED_KEYS)) {
                 stmt.setString(1, emp.getUsername());
                 stmt.setString(2, emp.getPassword());
                 stmt.setString(3, emp.getFullName());
